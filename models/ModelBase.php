@@ -16,21 +16,25 @@ class ModelBase{
           return  $res;
     }
 
-    public function last($columns){
+    public function last($columns = '*'){
         $res = $this->db->get($this->table,$columns,array(
             'ORDER'=>array('id'=>"DESC"),
         ));
         return  $res;
     }
 
-    public function find($id,$columns){
+    public function find($id,$columns = '*'){
        $res = $this->db->get($this->table,$columns,array(
           'id'=>$id,
        ));
         return $res;
     }
 
-    public function select($columns,$options){
+    public function all(){
+        return $this->select();
+    }
+
+    public function select($columns = '*' ,$options = array()){
        $res = $this->db->select($this->table,$columns,$options);
        return $res;
     }
