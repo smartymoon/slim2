@@ -24,9 +24,14 @@ class ModelBase{
     }
 
     public function find($id,$columns = '*'){
-       $res = $this->db->get($this->table,$columns,array(
-          'id'=>$id,
-       ));
+        if(is_numeric($id))
+        {
+            $res = $this->db->get($this->table,$columns,array(
+                'id'=>$id,
+            ));
+        }else{
+            $res = $this->db->get($this->table,$columns,$id);
+        }
         return $res;
     }
 
