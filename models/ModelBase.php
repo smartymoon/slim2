@@ -86,6 +86,8 @@ class ModelBase{
         var_dump($this->db->error());
     }
 
-
+public function count($where = array()){
+        return $this->db->count($this->table,$where);
+    }
     //math connect TODO
 }
